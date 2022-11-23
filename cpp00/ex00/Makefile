@@ -10,77 +10,35 @@
 #                                                                              #
 # **************************************************************************** #
 
-#Setting Color
-CCEND 		=   	\033[0m
-CCYAN 		=   	\033[34m
-CGREEN		=   	\033[33m
-CCRED 		=   	\033[31m
-CCPURPLE 	=   	\033[35m
 
-#Get arguments pass
-ARGV		=	$(filter-out $@,$(MAKECMDGOALS))
-NAME 		= 	 megaphone.a
-EXEC 		= 	 megaphone
-CC 		= 	 c++
+SRCS		=	megaphone.cpp			\
 
-PATH_SRC	=	./srcs/
-PATH_OBJ	=	./objs/
+OBJS		=	${SRCS:.cpp=.o}
 
-SRC 		=   	megaphone.cpp
+CC			= 	c++
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
-OBJ_SRC		=	$(SRC:.cpp=.o)
 
-SRC_O		=	$(addprefix $(PATH_SRC), $(SRC))
-OBJ_S		=	$(addprefix $(PATH_OBJ), $(OBJ_SRC))
+EXEC		=	megaphone
 
-HEADER 		= 	./includes/
-MK		= 	Makefile
-SAN 		= 	-g3 -fsanitize=address
-FLAGS 		= 	-Wall -Werror -Wextra -std=c++98 
+RM			=	rm -rf
 
-$(PATH_OBJ)%.o : $(PATH_SRC)%.cpp $(MK)
-	@mkdir $(PATH_OBJ) 2> /dev/null || true
-	@-$(CC) -o $@ -c $<
-	@printf "\r\t\033[K$(CCYAN)\t$< $(CCPURPLE)--> $(CCYAN)$@ $(CCEND)"
-	@sleep 0.1
+MKDIR		=	mkdir -p
 
-all: $(NAME)
+all:		${EXEC}
 
-$(NAME): $(OBJ_S)
-	@printf "\r\t\033[K$(CCYAN)[✅]\t$(EXEC) $(CCPURPLE)--> $(CCYAN) Gen Objs$(CCEND)"
-	@printf "\n$(CCYAN)[✅]\t$(CCPURPLE)Creation of Objs $(EXEC)...$(CCEND)\n"
-	@printf "$(CCYAN)[✅]\t$(CCPURPLE)Creation of $(NAME)...$(CCEND)\n"
-	@ar rc $(PATH_OBJ)$(NAME) $(OBJ_S)
-	@$(CC) $(PATH_OBJ)$(NAME) -o $(EXEC)
-	@printf "$(CCYAN)[✅]\t$(CCPURPLE)Compilation ./$(EXEC)...$(CCEND)\n"
+%.o: 		%.cpp
+			${CC} ${CFLAGS} -c $< -o $@
+
+${EXEC}:	${OBJS} Makefile
+			$(CC) ${CFLAGS} ${EXEC}.cpp -o ${EXEC}
 
 clean:
-	@printf "$(CCYAN)[✅]\t$(CCRED)Removal of $(EXEC) Object...$(CCEND)\n"
-	@-/bin/rm -rf $(PATH_OBJ)*.o
+			${RM} ${OBJS}
 
-fclean: clean
-	@printf "$(CCYAN)[✅]\t$(CCRED)Removal of $(NAME)...$(CCEND)\n"
-	@-/bin/rm -f $(PATH_OBJ)*.a
-	@-/bin/rm -rf $(PATH_OBJ)
-	@-/bin/rm -f Tags
-	@-/bin/rm -rf .ccls-cache
-	@-/bin/rm -f $(EXEC)
+fclean:		clean
+			${RM} ${EXEC} ${EXEC}.dSYM
 
-norme:
-	@echo "\033[33mNorme ..."
-	@norminette $(SRC)
-	@norminette $(HEADER)
+re:			fclean all
 
-git:	fclean
-	@git add .
-	@git commit -m "$(filter-out $@,$(MAKECMDGOALS))"
-	@git push
-
-auto:	fclean
-	@git add .
-	@git commit -m "Autosave"
-	@git push
-
-.PHONY: all clean fclean re san
-.SILENT :
-re: fclean all
+.PHONY: 	all clean fclean re
