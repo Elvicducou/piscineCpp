@@ -11,15 +11,26 @@
 # **************************************************************************** #
 
 
-SRCS		=	megaphone.cpp			\
 
-OBJS		=	${SRCS:.cpp=.o}
+SRCS		=	PhoneBook.cpp				\
+				Contact.cpp					\
+
+OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
+
+OBJS_DIR	=	objects
+SRCS_DIR	=	srcs
+
+INCLUDES	=	./includes/PhoneBook.hpp	\
+				./includes/Contact.hpp		\
 
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
+LIBINCLUDES	=	-Iincludes
 
-EXEC		=	megaphone
+LIB			=	libphonebook.a
+
+EXEC		=	TheVducouloPhone
 
 RM			=	rm -rf
 
@@ -27,18 +38,23 @@ MKDIR		=	mkdir -p
 
 all:		${EXEC}
 
-%.o: 		%.cpp
-			${CC} ${CFLAGS} -c $< -o $@
+${OBJS_DIR}/%.o: 	${SRCS_DIR}/%.cpp	${INCLUDES} Makefile
+			${MKDIR} $(@D)
+			${CC} ${CFLAGS} ${LIBINCLUDES} -c $< -o $@
 
-${EXEC}:	${OBJS} Makefile
-			$(CC) ${CFLAGS} ${EXEC}.cpp -o ${EXEC}
+$(LIB):		${OBJS} ${INCLUDES}
+			ar rcs ${LIB} ${OBJS}
+
+
+${EXEC}:	main.cpp ${LIB}
+			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES} ${LIB} -o ${EXEC}
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} $(OBJS_DIR)
 
 fclean:		clean
-			${RM} ${EXEC} ${EXEC}.dSYM
+			${RM} ${LIB} ${EXEC} ${LIB} ${EXEC}.dSYM
 
 re:			fclean all
 
-.PHONY: 	all clean fclean re
+.PHONY: 	all clean fclean re object
