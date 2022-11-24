@@ -13,7 +13,6 @@ private :
     std::string     name;
     int             current_index;
 public :
-    int     get_contact_info(void);
     int     add_contact(void);
     int     search_contact(void);
     int     set_current_index(int index);

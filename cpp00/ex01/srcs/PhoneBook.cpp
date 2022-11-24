@@ -82,13 +82,18 @@ int PhoneBook::search_contact()
 {
     int user_choice;
 
+    if (this->contacts[0].get_fn() == "")
+    {
+        std::cout << "No contacts, quitting search menu." << std::endl;
+        return (1);
+    }
     std::cout << "searching contact" << std::endl;
     std::cout << "*****************" << std::endl;
     std::cout << "    ID    | FIRST_NA | LAST_NA  | NICKNAME " << std::endl;
-    for (int i = 0; i <= this->current_index; i++)
+    for (int i = 0; i <= 7; i++)
         this->display_single_contact(i);
     user_choice = atoi(get_cin_value("ID TO INVESTIGATE >> ").c_str());
-    if (user_choice >= this->current_index)
+    if (user_choice > 7 || this->contacts[user_choice].get_fn() == "")
         std::cout << "We've ask for a real index, you donkey. Quitting Search menu." << std::endl;
     else
         display_full_contact_info(user_choice);
@@ -100,11 +105,6 @@ int PhoneBook::add_contact()
     std::string buff;
     Contact     contact;
 
-    if (this->current_index == 7)
-    {
-        std::cout << "too much contacts in list, you donkey" << std::endl;
-        return (1);
-    }
     std::cout << "You're about to add a contact" << std::endl;
     contact.set_fn(get_cin_value("CONTACT FIRST NAME >>"));
     contact.set_ln(get_cin_value("CONTACT LAST NAME >>"));
@@ -112,16 +112,11 @@ int PhoneBook::add_contact()
     contact.set_pn(get_cin_value("CONTACT PHONE NUMBER >>"));
     contact.set_ds(get_cin_value("CONTACT DARK SECRET >>"));
     this->contacts[this->current_index] = contact;
-    this->current_index++;
-    std::cout << "Successfully added " << contacts[this->current_index - 1].get_fn()
+    if (this->current_index < 7)
+        this->current_index++;
+    else
+        this->current_index = 0;
+    std::cout << "Successfully added " << contact.get_fn()
     << " in contact list" << std::endl;
-    return (0);
-}
-
-int PhoneBook::get_contact_info(void)
-{
-    Contact testcontact = this->contacts[0];
-    testcontact.set_fn("hihih samarche");
-    std::cout << testcontact.get_fn() << std::endl;
     return (0);
 }
