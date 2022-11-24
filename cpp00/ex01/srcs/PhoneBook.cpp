@@ -93,7 +93,7 @@ int PhoneBook::search_contact()
     for (int i = 0; i <= 7; i++)
         this->display_single_contact(i);
     user_choice = atoi(get_cin_value("ID TO INVESTIGATE >> ").c_str());
-    if (user_choice > 7 || this->contacts[user_choice].get_fn() == "")
+    if (user_choice < 0 || user_choice > 7 || this->contacts[user_choice].get_fn() == "")
         std::cout << "We've ask for a real index, you donkey. Quitting Search menu." << std::endl;
     else
         display_full_contact_info(user_choice);
