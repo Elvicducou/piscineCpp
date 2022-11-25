@@ -61,6 +61,8 @@ std::string get_cin_value(std::string prompt)
     {
         std::cout << prompt;
         std::getline(std::cin, buff);
+        if (!std::cin)
+            exit (EXIT_FAILURE);
         if (!buff.compare(""))
             std::cout << "field can't be empty, please type a value" << std::endl;
         else if ((!prompt.compare("CONTACT PHONE NUMBER >>") || !prompt.compare("ID TO INVESTIGATE >> "))

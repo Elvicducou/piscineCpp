@@ -20,7 +20,7 @@ int main(void)
     {
         std::cout << "COMMAND >> ";
         std::getline(std::cin, buff);
-        if (!buff.compare("EXIT"))
+        if (!buff.compare("EXIT") || !std::cin)
             break;
         else if (!buff.compare("ADD"))
             pb.add_contact();
