@@ -10,12 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/Zombie.hpp"
+# include <iostream>
+# include <string>
 
 int main(void)
 {
-    randomChump("Brendon le zonzon");
-    Zombie *edgar_zomb = newZombie("Edgar");
-    edgar_zomb->announce();
-    delete(edgar_zomb);
+    std::string     base_str = "HI THIS IS BRAIN";
+    std::string    *stringPTR = &base_str;
+    std::string    &stringREF = base_str;
+    std::cout << "base_str addr    : " << &base_str << std::endl;
+    std::cout << "stringPTR addr   : " << stringPTR << std::endl;
+    std::cout << "stringREF addr   : " << &base_str << std::endl;
+    std::cout << "base_str value   : "<< base_str << std::endl;
+    std::cout << "stringPTR value  : "<< *stringPTR << std::endl;
+    std::cout << "stringREF value  : "<< stringREF << std::endl;
 }

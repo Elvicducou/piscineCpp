@@ -12,25 +12,27 @@
 
 
 
-SRCS		=	newZombie.cpp				\
-				Zombie.cpp					\
-				randomChump.cpp				\
+SRCS		=	Weapon.cpp			\
+				HumanA.cpp			\
+				HumanB.cpp			\
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
 OBJS_DIR	=	objects
 SRCS_DIR	=	srcs
 
-INCLUDES	=	./includes/Zombie.hpp	\
+INCLUDES	=	includes/Weapon.hpp			\
+               	includes/HumanA.hpp			\
+                includes/HumanB.hpp			\
 
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
-LIB			=	zombie.a
+LIB			=	noviolence.a
 
-EXEC		=	zombie
+EXEC		=	noviolence
 
 RM			=	rm -rf
 

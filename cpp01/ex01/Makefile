@@ -12,9 +12,8 @@
 
 
 
-SRCS		=	newZombie.cpp				\
+SRCS		=	ZombieHorde.cpp				\
 				Zombie.cpp					\
-				randomChump.cpp				\
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
@@ -30,7 +29,7 @@ LIBINCLUDES	=	-Iincludes
 
 LIB			=	zombie.a
 
-EXEC		=	zombie
+EXEC		=	moar_brainz
 
 RM			=	rm -rf
 

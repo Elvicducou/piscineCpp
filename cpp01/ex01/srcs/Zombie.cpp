@@ -17,15 +17,14 @@ void    Zombie::set_name(std::string name)
     this->_name = name;
 }
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie()
 {
-    this->_name = name;
-    std::cout << " ***** Constructor called for " << this->_name << std::endl;
+    std::cout << " 🍼🍼🍼  Constructor called for a new zombie " << std::endl;
 }
 
 Zombie::~Zombie()
 {
-    std::cout <<" ***** Destructor called for " << this->_name << std::endl;
+    std::cout << " 🪦🪦🪦  Destructor called for " << this->_name << std::endl;
 }
 void Zombie::announce()
 {

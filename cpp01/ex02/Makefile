@@ -12,16 +12,14 @@
 
 
 
-SRCS		=	newZombie.cpp				\
-				Zombie.cpp					\
-				randomChump.cpp				\
+SRCS		=
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
 OBJS_DIR	=	objects
 SRCS_DIR	=	srcs
 
-INCLUDES	=	./includes/Zombie.hpp	\
+INCLUDES	=
 
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
@@ -30,7 +28,7 @@ LIBINCLUDES	=	-Iincludes
 
 LIB			=	zombie.a
 
-EXEC		=	zombie
+EXEC		=	adrresses
 
 RM			=	rm -rf
 
@@ -46,8 +44,8 @@ $(LIB):		${OBJS} ${INCLUDES}
 			ar rcs ${LIB} ${OBJS}
 
 
-${EXEC}:	main.cpp ${LIB}
-			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES} ${LIB} -o ${EXEC}
+${EXEC}:	main.cpp
+			$(CC) ${CFLAGS} main.cpp -o ${EXEC}
 
 clean:
 			${RM} ${OBJS} $(OBJS_DIR)
