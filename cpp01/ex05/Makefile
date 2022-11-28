@@ -12,23 +12,23 @@
 
 
 
-SRCS		=
+SRCS		=	Harl.cpp			\
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
 OBJS_DIR	=	objects
 SRCS_DIR	=	srcs
 
-INCLUDES	=
+INCLUDES	=	includes/Harl.hpp			\
 
 CC			= 	c++
-CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
+N_CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
-LIB			=	sedloosers.a
+LIB			=	Harl.a
 
-EXEC		=	sedloosers
+EXEC		=	Harl
 
 RM			=	rm -rf
 
@@ -44,8 +44,8 @@ $(LIB):		${OBJS} ${INCLUDES}
 			ar rcs ${LIB} ${OBJS}
 
 
-${EXEC}:	main.cpp
-			$(CC) ${CFLAGS} main.cpp -o ${EXEC}
+${EXEC}:	main.cpp ${LIB}
+			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES} ${LIB} -o ${EXEC}
 
 clean:
 			${RM} ${OBJS} $(OBJS_DIR)
