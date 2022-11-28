@@ -131,7 +131,10 @@ Fixed &Fixed::operator++(void)
 Fixed Fixed::operator++(int n)
 {
     Fixed tmp = *this;
-    ++*this;
+    if (!n)
+        ++*this;
+    else
+        this->_value += (n << this->_bits);
     return (tmp);
 }
 
@@ -144,7 +147,10 @@ Fixed &Fixed::operator--(void)
 Fixed Fixed::operator--(int n)
 {
     Fixed tmp = *this;
-    --*this;
+    if (!n)
+        --*this;
+    else
+        this->_value -= (n << this->_bits);
     return (tmp);
 }
 
