@@ -6,13 +6,13 @@
 
 HumanA::HumanA(std::string name, Weapon& weapon) : _weapon(weapon), _name(name)
 {
-    std::cout << "constructor called for " << this->_name << ", armed with " <<
+    std::cout << "constructor called for HumanA " << this->_name << ", armed with " <<
     this->_weapon.getType() << std::endl;
 }
 
 HumanA::~HumanA()
 {
-
+    std::cout << "Desstructor called for HumanA" << std::endl;
 }
 
 void HumanA::attack()
