@@ -14,8 +14,10 @@
 
 int main(void)
 {
-    Zombie* zombies = zombieHorde(3, "Brendon");
-    for (int i = 0;  i < 3; i++)
+    int zombies_count = 3;
+
+    Zombie* zombies = zombieHorde(zombies_count, "Brendon");
+    for (int i = 0;  i < zombies_count; i++)
     {
         zombies[i].announce();
     }

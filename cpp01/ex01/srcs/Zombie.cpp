@@ -19,12 +19,12 @@ void    Zombie::set_name(std::string name)
 
 Zombie::Zombie()
 {
-    std::cout << " 🍼🍼🍼  Constructor called for a new zombie " << std::endl;
+    std::cout << "Constructor called for a new zombie " << std::endl;
 }
 
 Zombie::~Zombie()
 {
-    std::cout << " 🪦🪦🪦  Destructor called for " << this->_name << std::endl;
+    std::cout << "Destructor called for " << this->_name << std::endl;
 }
 void Zombie::announce()
 {

@@ -22,7 +22,7 @@ int main( void )
     a.attack(b.getName());
     a.attack(b.getName());
     a.highFivesGuys();
-    b.takeDamage(8);
+    b.takeDamage(80);
     b.attack(a.getName());
     a.takeDamage(90);
     a.attack(b.getName());
