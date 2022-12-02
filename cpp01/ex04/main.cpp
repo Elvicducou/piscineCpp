@@ -15,6 +15,8 @@ int transformer(std::string filename, char *find_str, char *new_str)
         std::cout << "error : can't open file" << std::endl;
         exit(EXIT_FAILURE);
     }
+    if (std::string(find_str).empty())
+        return (0);
     while (base_file)
         buffer.push_back(base_file.get());
     while (1)
@@ -41,7 +43,7 @@ int main(int argc, char** argv)
             ./sedloosers [filename] [to_replace] [replacement]";
         exit(EXIT_FAILURE);
     }
-    else if (argv[2][0])
+    else
     {
         transformer(std::string (argv[1]), argv[2], argv[3]);
     }
