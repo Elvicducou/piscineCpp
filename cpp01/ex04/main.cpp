@@ -24,6 +24,7 @@ int transformer(std::string filename, char *find_str, char *new_str)
             break;
         buffer.erase(lastpos, strlen(find_str));
         buffer.insert(lastpos, new_str);
+        lastpos += strlen(new_str);
     }
     buffer.erase(buffer.length() - 1, 1);
     new_file << buffer;
@@ -40,7 +41,7 @@ int main(int argc, char** argv)
             ./sedloosers [filename] [to_replace] [replacement]";
         exit(EXIT_FAILURE);
     }
-    else
+    else if (argv[2][0])
     {
         transformer(std::string (argv[1]), argv[2], argv[3]);
     }

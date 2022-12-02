@@ -22,7 +22,7 @@ SRCS_DIR	=	srcs
 INCLUDES	=	includes/Harl.hpp			\
 
 CC			= 	c++
-N_CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
