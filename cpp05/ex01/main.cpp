@@ -66,7 +66,7 @@ void increment_decrement_test(void)
 
 int main(void)
 {
-	Bureaucrat ba = Bureaucrat("Edgar", 151);
+	Bureaucrat ba = Bureaucrat("Edgar", 149);
 	try
 	{
 		Form a = Form(std::string("sa main courante après avoir rencontré Adel"), 3, 9);

@@ -15,7 +15,7 @@ _name("default"), _sign_grade(150), _exec_grade(150)
 Form::Form(std::string name, int sign_grade, int exec_grade): 
 _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
-	if (sign_grade < 1 || exec_grade)
+	if (sign_grade < 1 || exec_grade < 1)
 		throw Form::GradeTooHighException();
 	else if (sign_grade > 150 || exec_grade > 150)
 		throw Form::GradeTooLowException();
