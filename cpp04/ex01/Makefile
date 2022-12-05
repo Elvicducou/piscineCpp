@@ -34,7 +34,7 @@ INCLUDES	=	includes/Animal.hpp			\
 				includes/project.h
 
 CC			= 	c++
-CFLAGS		= 	-Wall -Wextra -Werror -fsanitize=address -g -std=c++98
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 

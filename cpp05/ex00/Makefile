@@ -6,41 +6,29 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/02 19:11:38 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/05 18:17:23 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-SRCS		=	AAnimal.cpp			\
-				Dog.cpp				\
-				Cat.cpp				\
-				WrongCat.cpp		\
-				WrongAnimal.cpp		\
-				Brain.cpp			\
-				functions.cpp
+SRCS		=	Bureaucrat.cpp			\
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
 OBJS_DIR	=	objects
 SRCS_DIR	=	srcs
 
-INCLUDES	=	includes/AAnimal.hpp			\
-				includes/Dog.hpp			\
-				includes/Cat.hpp			\
-				includes/WrongCat.hpp		\
-				includes/WrongAnimal.hpp	\
-				includes/Brain.hpp          \
-				includes/project.h
+INCLUDES	=	includes/Bureaucrat.hpp			\
 
 CC			= 	c++
-CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
+CFLAGS		= 	-Wall -Wextra -Werror -fsanitize=address -g -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
-LIB			=	animal.a
+LIB			=	bureau.a
 
-EXEC		=	Abstract
+EXEC		=	Bureaucrat
 
 RM			=	rm -rf
 
