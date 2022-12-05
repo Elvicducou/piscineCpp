@@ -4,16 +4,19 @@
 
 #ifndef CPP_DOG_HPP
 #define CPP_DOG_HPP
-# include "Animal.hpp"
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-class Dog : public Animal {
+class Dog : public AAnimal {
 
 public :
     Dog          ();
     Dog          (std::string type);
     Dog          &operator=(Dog const &rhs);
     ~Dog         ();
-    virtual void  makeSound() const;
+    void         print_my_ideas(void);
+private :
+    Brain        *ownbrain;
 };
 
 

@@ -9,6 +9,7 @@ WrongCat::WrongCat() {
 }
 
 WrongCat::WrongCat(std::string type) {
+    this->type = type;
     std::cout << "Constructor called for WrongCat" << std::endl;
 }
 
@@ -21,8 +22,4 @@ WrongCat &WrongCat::operator=(const WrongCat &rhs) {
 
 WrongCat::~WrongCat() {
     std::cout << "Destructor called for WrongCat" << std::endl;
-}
-void WrongCat::makeSound() const
-{
-	std::cout << "*** Wrong CAT Noises ***" << std::endl;
 }

@@ -4,16 +4,19 @@
 
 #ifndef CPP_CAT_HPP
 #define CPP_CAT_HPP
-#include "Animal.hpp"
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
 
-class Cat : public Animal {
+class Cat : public AAnimal {
 public :
     Cat          ();
     Cat          (std::string type);
     Cat          &operator=(Cat const &rhs);
-    ~Cat         ();
-    virtual void  makeSound() const;
+    ~Cat();
+    void         print_my_ideas(void);
+private:
+    Brain        *ownbrain;
 };
 
 

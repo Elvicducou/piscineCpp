@@ -13,6 +13,7 @@ Animal::Animal(std::string type) : type(type) {
 }
 
 Animal &Animal::operator=(const Animal &rhs) {
+    std::cout << "ANIMAL COPY !!!!!!!!" << std::endl;
     if (this == &rhs)
         return (*this);
     this->type = rhs.type;
@@ -27,7 +28,10 @@ Animal::~Animal() {
 
 void Animal::makeSound() const
 {
-    
+    if (!type.compare("Dog"))
+        std::cout << "Wouaf Wouaf !" << std::endl;
+    else if (!type.compare("Cat"))
+        std::cout << "Miaou Miaou !" << std::endl;
 }
 
 std::string Animal::getType() const {

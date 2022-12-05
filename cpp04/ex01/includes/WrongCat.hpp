@@ -12,7 +12,6 @@ public :
     WrongCat          (std::string type);
     WrongCat          &operator=(WrongCat const &rhs);
     ~WrongCat         ();
-    void              makeSound(void) const;
 
 };
 
