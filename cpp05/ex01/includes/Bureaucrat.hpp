@@ -20,7 +20,7 @@ public :
         public :
         virtual const char* what() const throw()
         {
-            return ("Exception : grade is too high !");
+            return ("[BUREAUCRAT] Exception : grade is too high !");
         }
     };
 
@@ -29,7 +29,7 @@ public :
         public :
         virtual const char* what() const throw()
         {
-            return ("Exception : grade is too low !");
+            return ("[BUREAUCRAT] Exception : grade is too low !");
         }
     };
     

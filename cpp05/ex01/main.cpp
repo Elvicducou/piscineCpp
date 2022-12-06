@@ -5,76 +5,97 @@
 void ostream_test(void)
 {
 	std::cout << std::endl << "**** ostream test ****" << std::endl << std::endl;
-	Bureaucrat a = Bureaucrat("Brendon", 12);
-	Bureaucrat b = Bureaucrat("Latuile", 67);
+	Form a = Form("formulaire BXA12", 12, 66);
+	Form b = Form("formulaire B32C7", 67, 149);
 	std::cout << a << b;
 }
 
-void bad_init_test(void)
+void formBadInitTest()
 {
-	std::cout << std::endl << "**** bad init test ****" << std::endl << std::endl;
+	std::cout << std::endl << "**** Form bad init test ****" << std::endl << std::endl;
 	try
-		{
-			Bureaucrat a = Bureaucrat(std::string("a"), 151);
-		}
-		catch(Bureaucrat::GradeTooHighException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-		catch(Bureaucrat::GradeTooLowException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-	try
-		{
-			Bureaucrat a = Bureaucrat(std::string("a"), 0);
-			std::cout << a;
-		}
-		catch(Bureaucrat::GradeTooHighException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-		catch(Bureaucrat::GradeTooLowException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-}
-
-void increment_decrement_test(void)
-{
-	std::cout << std::endl << "**** increment test ****" << std::endl << std::endl;
-	Bureaucrat a = Bureaucrat("Jordan_du_69", 78);
-	for (int i = 0; i < 100; i++)
 	{
-		try {a.gradeIncrementer();}
-		catch(Bureaucrat::GradeTooLowException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
+		Form a = Form("test", 151, 12);
+		Form b = Form("newtest", 0, 72);
 	}
-	std::cout << a;
-	for (int i = 158; i > -20; i--)
+	catch(const Form::GradeTooHighException& e)
 	{
-		try {a.gradeDecrementer();}
-		catch(Bureaucrat::GradeTooHighException& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
-	}
-	std::cout << a;
-}
-
-int main(void)
-{
-	Bureaucrat ba = Bureaucrat("Edgar", 149);
-	try
-	{
-		Form a = Form(std::string("sa main courante après avoir rencontré Adel"), 3, 9);
+		std::cerr << e.what() << '\n';
 	}
 	catch(const Form::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	try
+	{
+		Form b = Form("newtest", 0, 72);
+	}
+	catch(const Form::GradeTooHighException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	try
+	{
+		Form a = Form("test", 57, 151);
+	}
+	catch(const Form::GradeTooHighException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	try
+	{
+		Form a = Form("test", 12, -35);
+	}
+	catch(const Form::GradeTooHighException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void formUnauthorizedTest()
+{
+	Bureaucrat ba = Bureaucrat("John", 55);
+	Form		high_priviledge = Form("High priviledge", 5, 19);
+	Form		low_priviledge = Form("Low priviledge", 70, 88);
+	try
+	{
+		ba.signForm(high_priviledge);
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		ba.signForm(low_priviledge);
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+int main(void)
+{
+	ostream_test();
+	formBadInitTest();
+	formUnauthorizedTest();
+	
 	//std::cout << a << b;
 	return (0);
 }
