@@ -82,7 +82,7 @@ std::ostream &operator<<(std::ostream &i, Form const &o)
 
 	if (o.getIsSigned())
 		signedstatus = "signed";
-	i << o.getName() << ", form is " << signedstatus << ", " << o.getSignGrade()
+	i << o.getName() << ", Form is " << signedstatus << ", " << o.getSignGrade()
 	<< " requiered to sign, " << o.getExecGrade() << " requiered to exec." << std::endl;
 	return (i);
 }
