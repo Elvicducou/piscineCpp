@@ -6,14 +6,13 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/07 12:48:50 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/07 12:53:15 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
 SRCS		=	Bureaucrat.cpp			\
-				Form.cpp				\
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
@@ -21,16 +20,15 @@ OBJS_DIR	=	objects
 SRCS_DIR	=	srcs
 
 INCLUDES	=	includes/Bureaucrat.hpp			\
-				includes/Form.hpp				\
 
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
-LIB			=	bureau.a
+LIB			=	convert.a
 
-EXEC		=	Bureaucrat
+EXEC		=	convert
 
 RM			=	rm -rf
 

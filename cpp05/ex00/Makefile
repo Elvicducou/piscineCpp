@@ -6,7 +6,7 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/05 18:17:23 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/07 12:48:42 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS_DIR	=	srcs
 INCLUDES	=	includes/Bureaucrat.hpp			\
 
 CC			= 	c++
-CFLAGS		= 	-Wall -Wextra -Werror -fsanitize=address -g -std=c++98
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 

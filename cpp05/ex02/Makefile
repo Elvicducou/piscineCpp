@@ -6,7 +6,7 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/06 15:12:10 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/07 12:48:57 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ INCLUDES	=	includes/Bureaucrat.hpp				\
 				includes/PresidentialPardonForm.hpp \
 
 CC			= 	c++
-CFLAGS		= 	-Wall -Wextra -Werror -fsanitize=address -g -std=c++98
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
