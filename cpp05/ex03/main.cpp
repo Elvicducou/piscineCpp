@@ -3,6 +3,7 @@
 #include "includes/ShrubberyCreationForm.hpp"
 #include "includes/RobotomyRequestForm.hpp"
 #include "includes/PresidentialPardonForm.hpp"
+#include "includes/Intern.hpp"
 
 void formIsNotSignedTest(void)
 {
@@ -66,6 +67,25 @@ void everythinFineTest(void)
 	std::cout << std::endl;
 }
 
+void internTest(void)
+{
+	std::cout << std::endl << "**** INTERN TEST ****" << std::endl << std::endl;
+	Intern someRandomIntern;
+	AForm* roboto_rf;
+	AForm* shrubbery_rf;
+	AForm* presidential_rf;
+	AForm* non_working_rf;
+
+	Bureaucrat ba = Bureaucrat("John", 2);
+	roboto_rf = someRandomIntern.makeForm("robotomy request", "Bender");
+	shrubbery_rf = someRandomIntern.makeForm("shrubbery creation request", "tree");
+	presidential_rf = someRandomIntern.makeForm("presidential pardon request", "Victor");
+	non_working_rf = someRandomIntern.makeForm("huzhuh", "test");
+	ba.signForm(*roboto_rf), ba.signForm(*shrubbery_rf), ba.signForm(*presidential_rf), ba.signForm(*non_working_rf);
+	ba.executeForm(*roboto_rf), ba.executeForm(*shrubbery_rf), ba.executeForm(*presidential_rf), ba.executeForm(*non_working_rf);
+	delete roboto_rf, delete shrubbery_rf, delete presidential_rf, delete non_working_rf;
+}
+
 int main(void)
 {
 	formIsNotSignedTest();
@@ -73,5 +93,6 @@ int main(void)
 	cantSignTest();
 	fiftyPercentRobotoTest();
 	everythinFineTest();
+	internTest();
 	return (0);
 }

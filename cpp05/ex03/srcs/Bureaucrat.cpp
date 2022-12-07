@@ -71,6 +71,8 @@ int Bureaucrat::getGrade(void) const
 
 void Bureaucrat::signForm(AForm &f)
 {
+	if (&f == nullptr)
+		return ;
 	try
 	{
 		f.beSigned(*this);
@@ -86,6 +88,8 @@ void Bureaucrat::signForm(AForm &f)
 
 void Bureaucrat::executeForm(AForm const &f)
 {
+	if (&f == nullptr)
+		return ;
 	try
 	{
 		f.execute(*this);

@@ -66,6 +66,8 @@ bool AForm::getIsSigned(void) const
 
 void AForm::beSigned(Bureaucrat &b)
 {
+	if (&b == nullptr)
+		return ;
 	if (b.getGrade() > _sign_grade)
 	{
 		throw AForm::GradeTooLowException();
@@ -77,6 +79,8 @@ void AForm::beSigned(Bureaucrat &b)
 
 void AForm::execute(Bureaucrat const &executor) const
 {
+	if (&executor == nullptr)
+		return ;
 	if (executor.getGrade() > _exec_grade)
 	{
 		throw AForm::GradeTooLowException();

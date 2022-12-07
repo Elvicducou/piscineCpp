@@ -46,7 +46,7 @@ public :
     AForm                  (std::string name, int sign_grade, int exec_grade);
     AForm                  (const AForm &rhs);
     AForm      &           operator=(AForm const &rhs);
-    ~AForm                 ();
+    virtual ~AForm         ();
     std::string           getName(void) const;
     int                   getSignGrade(void) const;
 	int                   getExecGrade(void) const;
