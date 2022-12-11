@@ -1,16 +1,51 @@
 #include "../includes/project.h"
 
-bool	check_int(char *arg, Input input)
+bool	set_input(std::string possible[4], Input *input)
 {
-	(void)input;
+	for (int i = 0; i < 4; i++)
+	{
+		if (!possible[i].compare("int"))
+			return (input->type = INT, true);
+		if (!possible[i].compare("double"))
+			return (input->type = DOUBLE, true);
+		if (!possible[i].compare("float"))
+			return (input->type = FLOAT, true);
+		if (!possible[i].compare("long"))
+			return (input->type = INVALID, false);
+	}
+	return (input->type = INVALID, false);
+}
+
+bool	identify_string(char *arg, Input *input)
+{
+	if (!strncmp(arg, "-inf", strlen(arg)))
+		input->is_str = true, input->type = DOUBLE;
+	if	(!strncmp(arg, "+inf", strlen(arg)))
+		input->is_str = true, input->type = DOUBLE;
+	if	(!strncmp(arg, "nan", strlen(arg)))
+		input->is_str = true, input->type = DOUBLE;
+	if	(!strncmp(arg, "-inff", 5))
+		input->is_str = true, input->type = FLOAT;
+	if	(!strncmp(arg, "+inff", 5))
+		input->is_str = true, input->type = FLOAT;
+	if	(!strncmp(arg, "nanf", 4))
+		input->is_str = true, input->type = FLOAT;
+	return input->is_str;
+}
+
+bool	identify_type(char *arg, Input *input)
+{
 	std::string possible[4] = {"int", "long", "float", "double"};
 	int dot_counter = 0;
 	long input_lg = atol(arg);
 	int  input_int = atoi(arg);
 
-	std::cout << "atoi : " << input_int << " atol : " << input_lg << std::endl;
 	if (input_int != input_lg)
 		possible[0] = "";
+	else
+		possible[1] = "";
+	if (input_lg == 0 && !isnumber(arg[0]))
+		return (identify_string(arg, input));
 	for (size_t i = 0; i < strlen(arg); i++)
 	{
 		if (!isnumber(arg[i]) && arg[i] != '.' 
@@ -24,33 +59,22 @@ bool	check_int(char *arg, Input input)
 				return false;
 		}
 		else if (arg[i] == 'f')
-			possible[3] = "";
+			possible[3] = "", possible[0] = "";
+		else if (i == strlen(arg) - 1 && arg[i] != 'f')
+			possible[2] = "";
 	}
-	std::cout << possible[0] << " " << possible[1] << " " << possible[2] << " " << possible[3] << " " << std::endl;
-	return (true);
+	if (!dot_counter)
+		possible[3] = "";
+	return (set_input(possible, input));
 }
 
-bool	check_float_double(char *arg)
+bool	check_type(char *arg, Input *input)
 {
-	(void)arg;
-	return (false);
-}
+	std::string res;
 
-bool	check_double(std::string input_string)
-{
-	(void)input_string;
-	return (false);
-}
-
-bool	check_type(char *arg, Input input)
-{
 	if (!strlen(arg))
 		return (false);
 	if (strlen(arg) == 1 && isalpha(arg[0]))
-		return (input.type = CHAR, true);
-	if (check_int(arg, input))
-		return (input.type = INT, true);
-	if (check_float_double(arg))
-		return (true);
-	return (input.type = INVALID, false);
+		return (input->type = CHAR, true);
+	return (identify_type(arg, input));
 }

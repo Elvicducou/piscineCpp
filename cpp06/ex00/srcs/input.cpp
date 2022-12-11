@@ -10,5 +10,11 @@ Input &Input::operator=(Input const &rhs)
 
 Input::Input(Input const &rhs)
 {
+	this->is_str = rhs.is_str;
 	*this = rhs;
+}
+
+Input::Input () : is_str(false)
+{
+	return ;
 }
