@@ -6,7 +6,7 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/11 17:53:37 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/12 23:56:44 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ INCLUDES	=	includes/project.h		\
 				includes/input.hpp		\
 
 CC			= 	c++
-CFLAGS		= 	-Wall -Wextra -Werror -fsanitize=address -g -std=c++98
+CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
 
 LIBINCLUDES	=	-Iincludes
 
