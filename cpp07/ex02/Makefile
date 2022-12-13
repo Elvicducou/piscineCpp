@@ -6,13 +6,13 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/13 17:34:49 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/13 22:07:38 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-SRCS		=	Array.cpp				\
+SRCS		=	
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
@@ -44,8 +44,8 @@ $(LIB):		${OBJS} ${INCLUDES}
 			ar rcs ${LIB} ${OBJS}
 
 
-${EXEC}:	main.cpp ${LIB}
-			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES} ${LIB} -o ${EXEC}
+${EXEC}:	main.cpp 
+			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES}  -o ${EXEC}
 
 clean:
 			${RM} ${OBJS} $(OBJS_DIR)
