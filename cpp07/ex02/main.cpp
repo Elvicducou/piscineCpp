@@ -66,11 +66,22 @@ void mallocedAndDestroyTest(void)
 	delete b;
 }
 
+void emptyArrayTest(void)
+{
+	std::cout << std::endl << "**** empty array test ****" <<std::endl << std::endl;
+	Array<int> b;
+	Array<int> c(2);
+	std::cout << b << c;
+	c = b;
+	std::cout << b << c;
+}
+
 int main(void)
 {
 	outOfRangeTest();
 	deepCopyTest();
 	allSortOfTypesTest();
 	mallocedAndDestroyTest();
+	emptyArrayTest();
 	return (0);
 }
