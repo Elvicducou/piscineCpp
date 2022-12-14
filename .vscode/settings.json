@@ -55,6 +55,7 @@
 		"iomanip": "cpp",
 		"stack": "cpp",
 		"filesystem": "cpp",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"vector": "cpp"
 	}
 }

@@ -6,20 +6,20 @@
 #    By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 11:14:42 by vducoulo          #+#    #+#              #
-#    Updated: 2022/12/13 23:15:36 by vducoulo         ###   ########.fr        #
+#    Updated: 2022/12/14 12:44:01 by vducoulo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-SRCS		=	
+SRCS		=	Span.cpp							\
 
 OBJS		=	$(addprefix ${OBJS_DIR}/, ${SRCS:.cpp=.o})
 
 OBJS_DIR	=	objects
 SRCS_DIR	=	srcs
 
-INCLUDES	=	
+INCLUDES	=	includes/Span.hpp					\
 
 CC			= 	c++
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98
@@ -28,7 +28,7 @@ LIBINCLUDES	=	-Iincludes
 
 LIB			=	lib.a
 
-EXEC		=	EasyFinds
+EXEC		=	Span
 
 RM			=	rm -rf
 
@@ -44,8 +44,8 @@ $(LIB):		${OBJS} ${INCLUDES}
 			ar rcs ${LIB} ${OBJS}
 
 
-${EXEC}:	main.cpp 
-			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES} -o ${EXEC}
+${EXEC}:	main.cpp ${LIB}
+			$(CC) ${CFLAGS} ${LIBINCLUDES} main.cpp ${EXECINCLUDES} ${LIB} -o ${EXEC}
 
 clean:
 			${RM} ${OBJS} $(OBJS_DIR)
