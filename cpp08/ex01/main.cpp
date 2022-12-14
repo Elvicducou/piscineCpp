@@ -3,7 +3,7 @@
 
 std::ostream &operator<<(std::ostream &o, Span const &i)
 {
-	o << std::endl << "Printting array with max size : " << i.getN() << " and size : "
+	o << std::endl << "Printing array with max size : " << i.getN() << " and size : "
 	<< i.getMaxNumbers() << " :" << std::endl;
 	for (unsigned int x = 0; x < i.getMaxNumbers(); x++)
 		o << i.getValueByIndex(x) << ", ";
@@ -122,6 +122,20 @@ void deepCopyTest(void)
 	std::cout << a << b;
 }
 
+void testByFortyTwo(void)
+{
+	std::cout << std::endl << "*** 42 PROVIDED TEST ***" << std::endl << std::endl;
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+	std::cout << sp;
+}
+
 int main (void)
 {
 	workingArrayTest();
@@ -132,4 +146,5 @@ int main (void)
 	emptyArrayPrintTest();
 	mallocedAndDestroyedTest();
 	deepCopyTest();
+	testByFortyTwo();
 }

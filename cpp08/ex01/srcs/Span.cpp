@@ -3,9 +3,10 @@
 //
 
 #include "../includes/Span.hpp"
+#include <algorithm>
 
-Span::Span () : _N(0), _maxfillednumbers(0) { }
-Span::Span(unsigned int N) : _N(N), _maxfillednumbers(0) { }
+Span::Span () : _N(0), _maxfillednumbers(0) { _arr.reserve(0);}
+Span::Span(unsigned int N) : _N(N), _maxfillednumbers(0) { _arr.reserve(N); }
 Span::Span(Span const &rhs) {*this = rhs;}
 unsigned int Span::getMaxNumbers(void) const {return _maxfillednumbers;}
 Span::~Span(){ }
@@ -24,7 +25,7 @@ Span &Span::operator=(Span const &rhs)
 void Span::fillWithRandomNumbers(void)
 {
 	srand(time(NULL));
-	for (unsigned int i = _maxfillednumbers; i < _N; i++)
+	for (unsigned int i = _maxfillednumbers; i < _arr.capacity(); i++)
 	{
 		_arr.push_back(rand()%10000);
 		_maxfillednumbers++;
@@ -52,7 +53,7 @@ int Span::shortestSpan(void) const
 		if (*iter < tmp && *iter != lowest)
 			tmp = *iter;
 	}
-	return (tmp - lowest);
+	return (tmp - lowest - 1);
 }
 
 int Span::longestSpan(void) const
