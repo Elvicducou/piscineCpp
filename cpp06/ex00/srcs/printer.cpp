@@ -42,7 +42,7 @@ void print_float(char *arg, double value, Input *input)
 	else if (input->type == CHAR)
 		std::cout << static_cast<float>(arg[0]) << ".0f" <<std::endl;
 	else if (input->type == DOUBLE)
-		std::cout << std::fixed << std::setprecision(strlen(strrchr(arg, '.')) - 1) << static_cast<float>(value) << "f" << std::endl;
+		std::cout << std::fixed << std::setprecision(strlen(strrchr(arg, '.') - 1)) << static_cast<float>(value) << "f" << std::endl;
 	else
 		std::cout << arg << std::endl;
 	return ;
@@ -61,7 +61,7 @@ void print_double(char *arg, double value, Input *input)
 	else if (input->type == CHAR)
 		std::cout << static_cast<double>(arg[0]) << ".0" <<std::endl;
 	else if (input->type == DOUBLE)
-		std::cout << std::fixed << std::setprecision(strlen(strrchr(arg, '.')) - 1) << static_cast<double>(value) << std::endl;
+		std::cout << std::fixed << std::setprecision(strlen(strrchr(arg, '.') - 1)) << static_cast<double>(value) << std::endl;
 	else
 		std::cout << std::string(arg).substr(0, strlen(arg) - 1) << std::endl;
 	return ;

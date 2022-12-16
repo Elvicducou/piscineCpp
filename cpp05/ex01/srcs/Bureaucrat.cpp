@@ -41,22 +41,22 @@ Bureaucrat::~Bureaucrat()
 
 void	Bureaucrat::gradeIncrementer(void)
 {
-	if (_grade + 1 > 150)
-	{
-		throw Bureaucrat::GradeTooLowException();
-		return;
-	}
-	_grade++;
-}
-
-void	Bureaucrat::gradeDecrementer(void)
-{
 	if (_grade - 1 < 1)
 	{
 		throw Bureaucrat::GradeTooHighException();
 		return;
 	}
 	_grade--;
+}
+
+void	Bureaucrat::gradeDecrementer(void)
+{
+	if (_grade + 1 > 150)
+	{
+		throw Bureaucrat::GradeTooLowException();
+		return;
+	}
+	_grade++;
 }
 
 std::string Bureaucrat::getName(void) const
@@ -74,6 +74,12 @@ void Bureaucrat::signForm(Form &f)
 	try
 	{
 		f.beSigned(*this);
+	}
+	catch(const Form::AlreadySignedException& e)
+	{
+		std::cerr << _name << " couldn't sign " << f.getName() << " because ";
+		std::cerr << e.what() << '\n';
+		return;
 	}
 	catch(const Form::GradeTooLowException& e)
 	{

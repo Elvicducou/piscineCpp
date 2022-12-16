@@ -1,5 +1,6 @@
 #include "../includes/project.h"
 
+Input::~Input() {};
 Input &Input::operator=(Input const &rhs)
 {
 	if (&rhs == this)

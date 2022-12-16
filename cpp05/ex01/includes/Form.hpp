@@ -33,6 +33,15 @@ public :
         }
     };
 
+    class AlreadySignedException : public std::exception
+    {
+        public :
+        virtual const char* what() const throw()
+        {
+            return ("[FORM] Exception : the form is alredy signed, you donkey !");
+        }
+    };
+
 	Form                  ();
     Form                  (std::string name, int sign_grade, int exec_grade);
     Form                  (const Form &rhs);

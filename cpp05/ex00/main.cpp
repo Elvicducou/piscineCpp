@@ -46,7 +46,7 @@ void increment_decrement_test(void)
 	for (int i = 0; i < 100; i++)
 	{
 		try {a.gradeIncrementer();}
-		catch(Bureaucrat::GradeTooLowException& e)
+		catch(Bureaucrat::GradeTooHighException& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
@@ -55,7 +55,7 @@ void increment_decrement_test(void)
 	for (int i = 158; i > -20; i--)
 	{
 		try {a.gradeDecrementer();}
-		catch(Bureaucrat::GradeTooHighException& e)
+		catch(Bureaucrat::GradeTooLowException& e)
 		{
 			std::cerr << e.what() << '\n';
 		}

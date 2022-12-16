@@ -95,7 +95,5 @@ int main(void)
 	ostream_test();
 	formBadInitTest();
 	formUnauthorizedTest();
-	
-	//std::cout << a << b;
 	return (0);
 }

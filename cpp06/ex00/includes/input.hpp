@@ -10,7 +10,7 @@ public:
 	Input			();
 	Input			(Input const &rhs);
 	Input			&operator=(Input const &rhs);
-	~Input			() {};
+	~Input			();
 	bool			is_str;
 	int 			type;
 };

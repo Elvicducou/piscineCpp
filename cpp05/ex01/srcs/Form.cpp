@@ -66,13 +66,14 @@ bool Form::getIsSigned(void) const
 
 void Form::beSigned(Bureaucrat &b)
 {
+	if (_is_signed)
+		throw Form::AlreadySignedException();
 	if (b.getGrade() > _sign_grade)
 	{
 		throw Form::GradeTooLowException();
 		return;
 	}
-	if (!_is_signed)
-		_is_signed = true;
+	_is_signed = true;
 	
 }
 
