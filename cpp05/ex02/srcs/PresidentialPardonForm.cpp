@@ -15,7 +15,7 @@ _target(rhs._target)
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) :
-AForm("PresidentialPardonForm", 25, 15), _target(target)
+AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
 	std::cout << "Assigned constructor for PresidentialPardonForm called" << std::endl;
 	return ;

@@ -65,10 +65,12 @@ void formBadInitTest()
 	{
 		std::cerr << e.what() << '\n';
 	}
+	std::cout << std::endl;
 }
 
 void formUnauthorizedTest()
 {
+	std::cout << std::endl << "**** Form unauthorized test ****" << std::endl << std::endl;
 	Bureaucrat ba = Bureaucrat("John", 55);
 	Form		high_priviledge = Form("High priviledge", 5, 19);
 	Form		low_priviledge = Form("Low priviledge", 70, 88);
@@ -88,6 +90,7 @@ void formUnauthorizedTest()
 	{
 		std::cerr << e.what() << '\n';
 	}
+	std::cout << std::endl;
 }
 
 int main(void)

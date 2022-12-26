@@ -77,12 +77,14 @@ void internTest(void)
 	AForm* non_working_rf;
 
 	Bureaucrat ba = Bureaucrat("John", 2);
+	std::cout << std::endl;
 	roboto_rf = someRandomIntern.makeForm("robotomy request", "Bender");
 	shrubbery_rf = someRandomIntern.makeForm("shrubbery creation request", "tree");
 	presidential_rf = someRandomIntern.makeForm("presidential pardon request", "Victor");
 	non_working_rf = someRandomIntern.makeForm("huzhuh", "test");
 	ba.signForm(*roboto_rf), ba.signForm(*shrubbery_rf), ba.signForm(*presidential_rf), ba.signForm(*non_working_rf);
 	ba.executeForm(*roboto_rf), ba.executeForm(*shrubbery_rf), ba.executeForm(*presidential_rf), ba.executeForm(*non_working_rf);
+	std::cout << std::endl;
 	delete roboto_rf, delete shrubbery_rf, delete presidential_rf, delete non_working_rf;
 }
 

@@ -49,6 +49,7 @@ void increment_decrement_test(void)
 		catch(Bureaucrat::GradeTooHighException& e)
 		{
 			std::cerr << e.what() << '\n';
+			break ;
 		}
 	}
 	std::cout << a;
@@ -58,6 +59,7 @@ void increment_decrement_test(void)
 		catch(Bureaucrat::GradeTooLowException& e)
 		{
 			std::cerr << e.what() << '\n';
+			break ;
 		}
 	}
 	std::cout << a;
