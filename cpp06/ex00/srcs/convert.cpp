@@ -6,10 +6,10 @@ bool	set_input(std::string possible[4], Input *input)
 	{
 		if (!possible[i].compare("int"))
 			return (input->type = INT, true);
-		if (!possible[i].compare("double"))
-			return (input->type = DOUBLE, true);
 		if (!possible[i].compare("float"))
 			return (input->type = FLOAT, true);
+		if (!possible[i].compare("double"))
+			return (input->type = DOUBLE, true);
 		if (!possible[i].compare("long"))
 			return (input->type = INVALID, false);
 	}
