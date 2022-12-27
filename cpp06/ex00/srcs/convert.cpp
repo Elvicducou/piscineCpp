@@ -18,18 +18,20 @@ bool	set_input(std::string possible[4], Input *input)
 
 bool	identify_string(char *arg, Input *input)
 {
-	if (!strncmp(arg, "-inf", strlen(arg)))
-		input->is_str = true, input->type = DOUBLE;
-	if	(!strncmp(arg, "+inf", strlen(arg)))
-		input->is_str = true, input->type = DOUBLE;
-	if	(!strncmp(arg, "nan", strlen(arg)))
-		input->is_str = true, input->type = DOUBLE;
-	if	(!strncmp(arg, "-inff", 5))
-		input->is_str = true, input->type = FLOAT;
-	if	(!strncmp(arg, "+inff", 5))
-		input->is_str = true, input->type = FLOAT;
-	if	(!strncmp(arg, "nanf", 4))
-		input->is_str = true, input->type = FLOAT;
+	int comparelen = strlen(arg);
+
+	if (!strncmp(arg, "-inf", comparelen))
+		return (input->is_str = true, input->type = DOUBLE, true);
+	if	(!strncmp(arg, "+inf", comparelen))
+		return (input->is_str = true, input->type = DOUBLE, true);
+	if	(!strncmp(arg, "nan", comparelen))
+		return (input->is_str = true, input->type = DOUBLE, true);
+	if	(!strncmp(arg, "-inff", comparelen))
+		return (input->is_str = true, input->type = FLOAT, true);
+	if	(!strncmp(arg, "+inff", comparelen))
+		return (input->is_str = true, input->type = FLOAT, true);
+	if	(!strncmp(arg, "nanf", comparelen))
+		return (input->is_str = true, input->type = FLOAT, true);
 	return input->is_str;
 }
 
