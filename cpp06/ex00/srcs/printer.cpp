@@ -64,8 +64,10 @@ void print_double(char *arg, double value, Input *input)
 		std::cout << static_cast<double>(arg[0]) << ".0" <<std::endl;
 	else if (input->type == DOUBLE)
 		std::cout << std::fixed << std::setprecision(strlen(strrchr(arg, '.')) - 1) << static_cast<double>(value) << std::endl;
+	else if (input->type == INT)
+		std::cout << std::string(arg) << ".0" << std::endl;
 	else
-		std::cout << std::string(arg).substr(0, strlen(arg)) << ".0" << std::endl;
+		std::cout << std::string(arg).substr(0, strlen(arg) - 1) << ".0" << std::endl;
 	return ;
 }
 

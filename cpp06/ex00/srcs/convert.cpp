@@ -2,6 +2,10 @@
 
 bool	set_input(std::string possible[4], Input *input)
 {
+	std::cout << "				possibles list : ";
+	for (int i = 0; i < 4; i++)
+		std::cout << possible[i] << ", ";
+	std::cout << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (!possible[i].compare("int"))
