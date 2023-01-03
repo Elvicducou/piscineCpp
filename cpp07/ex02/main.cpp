@@ -71,6 +71,8 @@ void emptyArrayTest(void)
 	std::cout << std::endl << "**** empty array test ****" <<std::endl << std::endl;
 	Array<int> b;
 	Array<int> c(2);
+	c[0] = 0;
+	c[1] = 1;
 	std::cout << b << c;
 	c = b;
 	std::cout << b << c;

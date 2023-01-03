@@ -4,22 +4,18 @@
 #include <iostream>
 
 template <typename T>
-void print(T &str, int last)
+void print(T const &str)
 {
-	if (!last)
-		std::cout << str << ", ";
-	else
-		std::cout << str << std::endl;
+	std::cout << str << ", ";
 }
 
 template <typename T, typename J>
-void iter(T *arr_addr, J arr_size, void (*f)(T &, int))
+void iter(T *arr_addr, J arr_size, void (*f)(T const &))
 {
-	for (int i = 0; i < arr_size - 1; i++)
+	for (int i = 0; i < arr_size; i++)
 	{
-		f (arr_addr[i], 0);
+		f (arr_addr[i]);
 	}
-	f (arr_addr[arr_size - 1], 1);
 }
 
 #endif
