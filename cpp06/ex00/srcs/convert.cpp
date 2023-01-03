@@ -2,10 +2,6 @@
 
 bool	set_input(std::string possible[4], Input *input)
 {
-	std::cout << "				possibles list : ";
-	for (int i = 0; i < 4; i++)
-		std::cout << possible[i] << ", ";
-	std::cout << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (!possible[i].compare("int"))
@@ -15,7 +11,7 @@ bool	set_input(std::string possible[4], Input *input)
 		if (!possible[i].compare("double"))
 			return (input->type = DOUBLE, true);
 		if (!possible[i].compare("long"))
-			return (input->type = INVALID, false);
+			return (input->type = LONG, true);
 	}
 	return (input->type = INVALID, false);
 }
